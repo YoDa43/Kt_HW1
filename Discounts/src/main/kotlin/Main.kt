@@ -6,13 +6,16 @@ fun main() {
     val maxPrice = 10_000
     val discount = 100
     val maxDiscount = 0.95
-    val regularCustomerDiscount = true
+    val regularCustomerDiscount = false
 
-    val result =
-        if (regularCustomerDiscount) price * maxDiscount * 0.99
-        else if (price > maxPrice) price.toDouble() * maxDiscount
-        else if (price > startPrice) price.toDouble() - discount
-        else price.toDouble()
+    val result = when {
+        (price > maxPrice) -> price * maxDiscount
+        (price > startPrice) -> price - discount
+        else -> price
+    }
 
-    println(ceil(result).toInt())
+    val discounted = if (regularCustomerDiscount) result.toDouble() * 0.99
+    else result.toDouble()
+
+    println(ceil(discounted).toInt())
 }

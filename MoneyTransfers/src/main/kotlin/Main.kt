@@ -1,6 +1,6 @@
 fun main() {
-    val comSize = 0.75
-    val amount = 69
+    val comSize = 0.0075
+    val amount = 7500
 
     comRes(comSize, amount)
 }
